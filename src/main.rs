@@ -6,22 +6,26 @@ use raylib::prelude::*;
 use framebuffer::Framebuffer;
 use line::line;
 
-fn draw_scene(framebuffer: &mut Framebuffer) {
+fn draw_scene(
+    framebuffer: &mut Framebuffer,
+    translate_x: f32,
+    translate_y: f32,
+) {
     framebuffer.set_background_color(Color::new(50, 50, 100, 255));
     framebuffer.clear();
 
     framebuffer.set_current_color(Color::GREEN);
     line(
         framebuffer,
-        Vector2::new(50.0, 50.0),
-        Vector2::new(350.0, 350.0),
+        Vector2::new(50.0 + translate_x, 50.0 + translate_y),
+        Vector2::new(350.0 + translate_x, 350.0 + translate_y),
     );
 
     framebuffer.set_current_color(Color::RED);
     line(
         framebuffer,
-        Vector2::new(350.0, 50.0),
-        Vector2::new(50.0, 350.0),
+        Vector2::new(350.0 + translate_x, 50.0 + translate_y),
+        Vector2::new(50.0 + translate_x, 350.0 + translate_y),
     );
 }
 
@@ -39,7 +43,15 @@ fn main() {
     let mut framebuffer = Framebuffer::new(window_width as usize, window_height as usize);
     draw_scene(&mut framebuffer);
 
+    let mut translate_x = 0.0;
+    let mut translate_y = 0.0;
+
     while !window.window_should_close() {
+        translate_x += 1.0;
+        translate_y += 1.0;
+
+        framebuffer.clear();
+
         if window.is_window_resized() {
             let new_width = window.get_screen_width() as usize;
             let new_height = window.get_screen_height() as usize;
