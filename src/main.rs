@@ -40,25 +40,25 @@ fn main() {
         .log_level(TraceLogLevel::LOG_WARNING)
         .build();
 
-    let mut framebuffer = Framebuffer::new(window_width as usize, window_height as usize);
-    draw_scene(&mut framebuffer);
-
     let mut translate_x = 0.0;
     let mut translate_y = 0.0;
+
+    let mut framebuffer = Framebuffer::new(window_width as usize, window_height as usize);
+    draw_scene(&mut framebuffer, translate_x, translate_y);
+
+    
 
     while !window.window_should_close() {
         translate_x += 1.0;
         translate_y += 1.0;
 
-        framebuffer.clear();
-
         if window.is_window_resized() {
             let new_width = window.get_screen_width() as usize;
             let new_height = window.get_screen_height() as usize;
             framebuffer = Framebuffer::new(new_width, new_height);
-            draw_scene(&mut framebuffer);
         }
 
+        draw_scene(&mut framebuffer, translate_x, translate_y);
         framebuffer.swap_buffers(&mut window, &raylib_thread);
     }
 }
