@@ -37,6 +37,8 @@ fn main() {
     patterns::spawn_r_pentomino(&mut current, 20, 100);
     patterns::spawn_lwss(&mut current, 5, 120);
     patterns::spawn_gosper_glider_gun(&mut current, 5, 60);
+    patterns::spawn_pentadecathlon(&mut current, 120, 100);
+    patterns::spawn_acorn(&mut current, 120, 135);
 
     let mut next = Framebuffer::new(CELL_SIZE, CELL_SIZE);
     next.set_background_color(game_of_life::DEAD);

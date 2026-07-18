@@ -77,6 +77,32 @@ pub fn spawn_lwss(framebuffer: &mut Framebuffer, x: i32, y: i32) {
     }
 }
 
+pub fn spawn_pentadecathlon(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (2, 0), (7, 0),
+        (0, 1), (1, 1), (3, 1), (4, 1), (5, 1), (6, 1), (8, 1), (9, 1),
+        (2, 2), (7, 2),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
+pub fn spawn_acorn(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (1, 0),
+        (3, 1),
+        (0, 2), (1, 2), (4, 2), (5, 2), (6, 2),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
 pub fn spawn_gosper_glider_gun(framebuffer: &mut Framebuffer, x: i32, y: i32) {
     let cells = [
         (24, 0),
