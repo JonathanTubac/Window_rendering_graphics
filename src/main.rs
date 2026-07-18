@@ -29,6 +29,7 @@ fn main() {
 
     patterns::spawn_glider(&mut current, 10, 10);
     patterns::spawn_blinker(&mut current, 40, 20);
+    patterns::spawn_toad(&mut current, 10, 40);
 
     let mut next = Framebuffer::new(CELL_SIZE, CELL_SIZE);
     next.set_background_color(game_of_life::DEAD);
