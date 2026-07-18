@@ -37,6 +37,14 @@ impl Framebuffer {
         }
     }
 
+    pub fn get_color(&self, x: i32, y: i32) -> Color {
+        if x >= 0 && y >= 0 && (x as usize) < self.width && (y as usize) < self.height {
+            self.pixels[y as usize * self.width + x as usize]
+        } else {
+            self.background_color
+        }
+    }
+
     pub fn render_to_file(&self, path: &str) {
         let w = self.width as u32;
         let h = self.height as u32;
@@ -114,8 +122,21 @@ impl Framebuffer {
         }
 
         if let Ok(texture) = window.load_texture_from_image(raylib_thread, &image) {
+            let screen_width = window.get_screen_width() as f32;
+            let screen_height = window.get_screen_height() as f32;
+
+            let source = Rectangle::new(0.0, 0.0, self.width as f32, self.height as f32);
+            let dest = Rectangle::new(0.0, 0.0, screen_width, screen_height);
+
             let mut renderer = window.begin_drawing(raylib_thread);
-            renderer.draw_texture(&texture, 0, 0, Color::WHITE);
+            renderer.draw_texture_pro(
+                &texture,
+                source,
+                dest,
+                Vector2::new(0.0, 0.0),
+                0.0,
+                Color::WHITE,
+            );
         }
     }
 }
