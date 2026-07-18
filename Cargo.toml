@@ -2,6 +2,7 @@
 name = "window_rendering"
 version = "0.1.0"
 edition = "2024"
+default-run = "window_rendering"
 
 [profile.dev]
 opt-level = 3
