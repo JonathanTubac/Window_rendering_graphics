@@ -2,6 +2,7 @@ mod framebuffer;
 mod line;
 mod polygon;
 mod game_of_life;
+mod patterns;
 
 use std::thread;
 use std::time::Duration;
@@ -25,6 +26,8 @@ fn main() {
     let mut current = Framebuffer::new(CELL_SIZE, CELL_SIZE);
     current.set_background_color(game_of_life::DEAD);
     current.clear();
+
+    patterns::spawn_glider(&mut current, 10, 10);
 
     let mut next = Framebuffer::new(CELL_SIZE, CELL_SIZE);
     next.set_background_color(game_of_life::DEAD);
