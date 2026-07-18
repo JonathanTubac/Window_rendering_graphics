@@ -10,7 +10,7 @@ use std::time::Duration;
 use raylib::prelude::*;
 use framebuffer::Framebuffer;
 
-const CELL_SIZE: usize = 100;
+const CELL_SIZE: usize = 150;
 
 fn main() {
     let window_width = 800;
@@ -31,6 +31,12 @@ fn main() {
     patterns::spawn_blinker(&mut current, 40, 20);
     patterns::spawn_toad(&mut current, 10, 40);
     patterns::spawn_pulsar(&mut current, 60, 60);
+    patterns::spawn_beacon(&mut current, 100, 10);
+    patterns::spawn_beehive(&mut current, 100, 25);
+    patterns::spawn_block(&mut current, 100, 35);
+    patterns::spawn_r_pentomino(&mut current, 20, 100);
+    patterns::spawn_lwss(&mut current, 5, 120);
+    patterns::spawn_gosper_glider_gun(&mut current, 5, 60);
 
     let mut next = Framebuffer::new(CELL_SIZE, CELL_SIZE);
     next.set_background_color(game_of_life::DEAD);

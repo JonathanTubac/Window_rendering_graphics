@@ -14,6 +14,88 @@ pub fn spawn_glider(framebuffer: &mut Framebuffer, x: i32, y: i32) {
     }
 }
 
+pub fn spawn_beacon(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (0, 0), (1, 0),
+        (0, 1), (1, 1),
+        (2, 2), (3, 2),
+        (2, 3), (3, 3),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
+pub fn spawn_block(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [(0, 0), (1, 0), (0, 1), (1, 1)];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
+pub fn spawn_beehive(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (1, 0), (2, 0),
+        (0, 1), (3, 1),
+        (1, 2), (2, 2),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
+pub fn spawn_r_pentomino(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (1, 0), (2, 0),
+        (0, 1), (1, 1),
+        (1, 2),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
+pub fn spawn_lwss(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (1, 0), (2, 0), (3, 0), (4, 0),
+        (0, 1), (4, 1),
+        (4, 2),
+        (0, 3), (3, 3),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
+pub fn spawn_gosper_glider_gun(framebuffer: &mut Framebuffer, x: i32, y: i32) {
+    let cells = [
+        (24, 0),
+        (22, 1), (24, 1),
+        (12, 2), (13, 2), (20, 2), (21, 2), (34, 2), (35, 2),
+        (11, 3), (15, 3), (20, 3), (21, 3), (34, 3), (35, 3),
+        (0, 4), (1, 4), (10, 4), (16, 4), (20, 4), (21, 4),
+        (0, 5), (1, 5), (10, 5), (14, 5), (16, 5), (17, 5), (22, 5), (24, 5),
+        (10, 6), (16, 6), (24, 6),
+        (11, 7), (15, 7),
+        (12, 8), (13, 8),
+    ];
+
+    framebuffer.set_current_color(ALIVE);
+    for (dx, dy) in cells {
+        framebuffer.set_pixel(x + dx, y + dy);
+    }
+}
+
 pub fn spawn_blinker(framebuffer: &mut Framebuffer, x: i32, y: i32) {
     let cells = [(0, 0), (1, 0), (2, 0)];
 
